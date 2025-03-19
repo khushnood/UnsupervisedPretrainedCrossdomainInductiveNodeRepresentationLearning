@@ -12,10 +12,26 @@ To evaluate the performance of our model, we have used five real-world dynamic g
 ## Please cite the following paper if you use this code. 
 #### K. Abbas, S. Dong, A. Abbasi et al., Cross-Domain Inductive Applications with Unsupervised (Dynamic) Graph Neural Networks(GNN): Leveraging Siamese GNN and Energy-Based PMI Optimization, Physica D (2025), doi: https://doi.org/10.1016/j.physd.2025.134632.
 
-**Requirements**
-pip install networkx==2.3  numpy==1.19.5 tqdm==4.40.0 pandas==1.3.2 Keras==2.3.1 matplotlib==3.5.2  node2vec==0.4.3 sklearn==0.0 qc-procrustes  scipy==1.7.3 prettytable
+*Requirement**
+
+Python >=3.7
+
+tensorflow==2.5 compatible
+
+pip install scipy==1.7.3 networkx==2.3 tqdm==4.40.0 pandas==1.3.2 Keras==2.3.1 matplotlib==3.5.2 torch==1.9.0 node2vec==0.4.3 sklearn==0.0 prettytable qc-procrustes
 
 
-python main.py
+usage for training for first time
 
-run with default parameter..see main.py for cmd arguments.
+python main.py --datasets 'THCN' --pretrained 0 --model_path 'pretrainedModel_sparse/pretrainedModel.ckpt'
+
+
+usage for training for using as pretrained
+
+python main.py --datasets 'THCN' --pretrained 1 --model_path 'pretrainedModel_sparse/pretrainedModel.ckpt'
+
+For transfor learning 
+python main.py --datasets 'THCN' --pretrained transfer --model_path 'pretrainedModel_sparse/pretrainedModel.ckpt'
+
+for using your own data see the loader/dataset_loader.py/load_dataset() function.
+For more options for parellel execution use --ncpu 10.. make sure you have enough RAM to generate the embedding parelllaly for different snapshots.
